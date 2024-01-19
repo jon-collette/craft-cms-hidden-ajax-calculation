@@ -1,6 +1,6 @@
 # AJAX Logic Processor for Craft CMS
 
-The AJAX Logic Processor is a Craft CMS plugin designed to provide a flexible AJAX endpoint for dynamic logic processing and calculations. This plugin enables seamless integration of complex logic operations with Craft CMS, enhancing the capability to handle diverse calculation needs through AJAX requests.
+The AJAX Logic Processor is a [Craft CMS](https://craftcms.com/) plugin designed to provide a flexible AJAX endpoint for dynamic logic processing and calculations. This plugin enables seamless integration of complex logic operations with Craft CMS, enhancing the capability to handle diverse calculation needs through AJAX requests.
 
 This plugin's primary focus is to obscure formula calculations from savvy users but has other potential use cases.
 
@@ -21,14 +21,14 @@ This plugin's primary focus is to obscure formula calculations from savvy users 
 1. **If installing via zip, upload the plugin:**
 Upload the unzipped plugin folder to
 
-`/path/to/project/plugins/`
+`/path/to/craftproject/plugins/`
 
 2. **Via Composer:**
 Open your terminal and go to your Craft project:
 
-`cd /path/to/project`
+`cd /path/to/craftproject`
 
-Then tell Composer to load the plugin:
+Then tell Composer to load the plugin from the Craft folder:
 
 `composer require jon-collette/craft-ajax-endpoint-for-hidden-calculations`
 
@@ -54,6 +54,7 @@ The plugin doesn't require additional configuration. It utilizes `ajaxcalc.php` 
 Note: The array[0] position is used as the formula index. An unlimited number of values can be passed.
 
 ```php
+<?php 
 return [
     'formulas' => [
     	// $params[0] should match the key
@@ -100,9 +101,10 @@ The plugin will pass some errors via the return:
 
 Send an AJAX request to the provided endpoint with the necessary parameters. The plugin processes the request and returns the result based on the defined logic in `ajaxcalc.php`.
 
-***Example AJAX request:*** Note that the CSRF token is required for security needs and the token needs to be uncached as Craft CMS will cache any page for 24 hours by default. Thusly [No-Cache is highly recommended](https://plugins.craftcms.com/nocache?craft4) is highly recommended. This script is simplest to use as part of a template.TWIG to fetch the user's `craft.app.request.csrfToken`. The data must be sent as part of an array.
+***Example AJAX request:*** Note that the CSRF token is required for security needs and the token needs to be uncached as Craft CMS will cache any page for 24 hours by default. A plugin like [No-Cache](https://plugins.craftcms.com/nocache?craft4) can be used to de-cache or, if caching is preferred, using [Blitz Dynamic Content](https://putyourlightson.com/plugins/blitz#dynamic-content) is needed. This script is simplest to use as part of a template.TWIG to fetch the user's `craft.app.request.csrfToken`. The data must be sent as part of an array:
 
 ```javascript
+<script>
 var csrfTokenValue = "{{ craft.app.request.csrfToken }}";
 var dataArray = ["math",1,2];
 
@@ -120,14 +122,16 @@ fetch('/actions/_ajax-endpoint-for-hidden-calculations/calculation/perform-calcu
 	// Do something with dataReturn.result
 	console.log(dataReturn.result);
 }).catch(error => console.error('Error:', error));
+</script>
 ```
 
 ## Development and Contributions
+
 Contributions to the plugin are welcome. Please ensure any pull requests maintain the coding standards and functionality of the plugin.
 
 ## Support and Documentation
 
-For support and detailed documentation, please reach out to us on GitHub at [example.com](https://example.com).
+For support and detailed documentation, please reach out to me [on Github](https://github.com/jon-collette).
 
 ## Licensing
 
