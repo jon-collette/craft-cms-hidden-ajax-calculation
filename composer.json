@@ -1,0 +1,42 @@
+{
+	"name": "jon-collette/craft-ajax-endpoint-for-hidden-calculations",
+	"description": "An AJAX endpoint for dynamic logic processing and calculations.",
+	"type": "craft-plugin",
+	"keywords": ["ajax", "ajax-endpoint", "hidden-calculation"],
+	"license": "MIT",
+	"authors": [{
+		"name": "Jon Collette",
+		"homepage": "https://joncollette.com"
+	}],
+	"support": {
+		"email": "jcollette@gmail.com",
+		"issues": "https://github.com/developer/repo/issues?state=open",
+		"source": "https://github.com/developer/repo",
+		"docs": "https://github.com/developer/repo/blob/master/README.md"
+	},
+	"require": {
+		"php": ">=8.0.2",
+		"craftcms/cms": "^4.5.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"joncollette\\craftajaxendpointforhiddencalculations\\": "src/"
+		}
+	},
+	"extra": {
+		"handle": "_ajax-endpoint-for-hidden-calculations",
+		"name": "AJAX Logic Processor",
+		"developer": "Jon Collette",
+		"documentationUrl": "https://github.com/developer/repo/blob/master/README.md"
+	},
+	"config": {
+		"sort-packages": true,
+		"platform": {
+			"php": "8.0.2"
+		},
+		"allow-plugins": {
+			"yiisoft/yii2-composer": true,
+			"craftcms/plugin-installer": true
+		}
+	}
+}
